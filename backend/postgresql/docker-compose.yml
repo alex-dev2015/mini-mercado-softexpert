@@ -1,0 +1,13 @@
+version: '3.9'
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: openPsql20
+      POSTGRES_USER: expert
+      POSTGRES_DB: mercado_expert
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
