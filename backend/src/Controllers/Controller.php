@@ -23,7 +23,7 @@ class Controller
 
         if ($verbo == 'POST'){
             $this->response->setConteudoResposta($dados)
-                ->setHttpStatusCode(201)
+                ->setHttpStatusCode(200)
                 ->setMensagemDeRetorno('Cadastro Realizado com Sucesso!');
         }
 

@@ -1,19 +1,22 @@
 <?php
 
-date_default_timezone_set('America/Sao_Paulo');
-header('Content-Type: application/json; charset=utf-8');
-
 require_once __DIR__ . '/vendor/autoload.php';
 
 $dispatcher = require __DIR__ . '/routes.php';
 
+date_default_timezone_set('America/Sao_Paulo');
+
 $httpMethod = $_SERVER['REQUEST_METHOD'];
 $uri = $_SERVER['REQUEST_URI'];
 
+if ($httpMethod === 'OPTIONS') {
+    header('Access-Control-Allow-Origin: *');
+    header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
+    header('Access-Control-Allow-Headers: X-Requested-With, Content-Type, Authorization');
+    exit(0);
+}
+
 $routeInfo = $dispatcher->dispatch($httpMethod, $uri);
-
-
-
 
 switch ($routeInfo[0]) {
     case FastRoute\Dispatcher::NOT_FOUND:
@@ -38,3 +41,7 @@ switch ($routeInfo[0]) {
         call_user_func_array([$controller, $method], $vars);
         break;
 }
+
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
+header('Access-Control-Allow-Headers: X-Requested-With, Content-Type, Authorization');

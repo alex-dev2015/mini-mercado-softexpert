@@ -32,7 +32,6 @@ $dispatcher = FastRoute\simpleDispatcher(function(RouteCollector $r) {
     $r->addRoute('POST', '/iniciar_venda', 'App\Controllers\VendaController@iniciar');
     $r->addRoute('POST', '/realizar_venda', 'App\Controllers\VendaController@create');
 
-
 });
 
 return $dispatcher;
