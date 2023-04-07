@@ -4,38 +4,40 @@ namespace App\Models;
 
 use PDOException;
 
-class ProdutoModel extends ModelBase
+class ProductModel extends ModelBase
 {
+
     public function __construct()
     {
         parent::__construct();
+
     }
 
-    public function listarTodosOsProdutos()
+    public function listAllProducts()
     {
         try {
-            $produtos = $this->readAll(
-                'produtos'
+            $products = $this->readAll(
+                'products'
             );
         }catch (PDOException $exception){
             return $exception->getMessage();
         }
-        return $produtos;
+        return $products;
     }
 
-    public function inserirProduto(array $dados)
+    public function insertProduct(array $data)
     {
         return $this->insert(
-            'produtos',
-            ":nome, :preco, :tipo_id",
-            $dados
+            'products',
+            ":product_name, :price, :type_id",
+            $data
         );
     }
 
-    public function pesquisarProduto($id)
+    public function searchProduct($id)
     {
         return $this->findBy(
-            'produtos',
+            'products',
             'id',
             $id
         );

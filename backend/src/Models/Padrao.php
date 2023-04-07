@@ -4,10 +4,9 @@ namespace App\Models;
 
 interface Padrao
 {
-    public function read(array $colunas , $tabela , array  $filtrarColuna = null, array $parametros = null, array $value = null);
-    public function findBy(string $tabela, string $coluna, int $id);
-    public function readAll(string $tabela);
-    public function update(string $tabela, array  $colunas, array $dados, $where , $id);
-    public function delete(string $tabela, int $id);
-    public function insert(string$tabela, array $colunas , array $dados);
+    public function findBy(string $table, string $column, int $id);
+    public function readAll(string $table);
+    public function update(string $table, array $columns, array $data, $where , $id);
+    public function delete(string $table, int $id);
+    public function insert(string $table, array $columns , array $data);
 }
