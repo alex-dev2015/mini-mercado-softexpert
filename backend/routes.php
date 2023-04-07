@@ -2,37 +2,30 @@
 
 use FastRoute\RouteCollector;
 
-$dispatcher = FastRoute\simpleDispatcher(function(RouteCollector $r) {
-    /**
-     * Rotas de Produtos
-     */
-    $r->addRoute('GET', '/produtos', 'App\Controllers\ProdutoController@index');
-    $r->addRoute('GET', '/produtos/{id:\d+}', 'App\Controllers\ProdutoController@show');
-    $r->addRoute('POST', '/produtos', 'App\Controllers\ProdutoController@create');
+$dispatcher = FastRoute\simpleDispatcher(
+    function (RouteCollector $r) {
+        /**
+         * Products Routes
+         */
+        $r->addRoute('GET', '/products', 'App\Controllers\ProductController@index');
+        $r->addRoute('GET', '/products/{id:\d+}', 'App\Controllers\ProductController@show');
+        $r->addRoute('POST', '/products', 'App\Controllers\ProductController@create');
 
-    /**
-     * Rotas do tipo de Produto
-     */
-    $r->addRoute('GET', '/tipo_produtos', 'App\Controllers\TipoProdutoController@index');
-    $r->addRoute('GET', '/tipo_produtos_impostos', 'App\Controllers\TipoProdutoController@listarImpostos');
-    $r->addRoute('GET', '/tipo_produtos/{id:\d+}', 'App\Controllers\TipoProdutoController@show');
-    $r->addRoute('POST', '/tipo_produtos', 'App\Controllers\TipoProdutoController@create');
+        /**
+         * Product Types Routes
+         */
+        $r->addRoute('GET', '/product_type', 'App\Controllers\ProductTypeController@index');
+        $r->addRoute('GET', '/product_type/{id:\d+}', 'App\Controllers\ProductTypeController@show');
+        $r->addRoute('POST', '/product_type', 'App\Controllers\ProductTypeController@create');
 
-    /**
-     * Rotas de impostos
-     */
-    $r->addRoute('GET', '/imposto_produtos', 'App\Controllers\ImpostoProdutoController@index');
-    $r->addRoute('GET', '/imposto_produtos/{id:\d+}', 'App\Controllers\ImpostoProdutoController@show');
-    $r->addRoute('POST', '/imposto_produtos', 'App\Controllers\ImpostoProdutoController@create');
+        /**
+         * Sales Routes
+         */
+        $r->addRoute('GET', '/sales', 'App\Controllers\SaleController@index');
+        $r->addRoute('POST', '/execute_sale', 'App\Controllers\SaleController@executeSale');
 
-    /**
-     * Rotas de Vendas
-     */
-    $r->addRoute('GET', '/vendas', 'App\Controllers\VendaController@index');
-    $r->addRoute('POST', '/iniciar_venda', 'App\Controllers\VendaController@iniciar');
-    $r->addRoute('POST', '/realizar_venda', 'App\Controllers\VendaController@create');
-
-});
+    }
+);
 
 return $dispatcher;
 

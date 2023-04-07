@@ -16,57 +16,10 @@ class ModelBase implements Padrao
         $this->setConexao($conexao);
     }
 
-    public function read(array $colunas, $tabela, array $filtrarColuna = null, array $parametros = null, array $value = null)
-    {
-        // TODO: Implement read() method.
-        $query = "select ";
-
-        foreach ($colunas as $field) {
-            $query .= " {$field},";
-        }
-
-        //retira a última vírgula
-        $rest = substr($query, 0, -1);
-
-        $query = $rest;
-
-        $query .= " from {$tabela} WHERE  ";
-
-
-        if ($filtrarColuna <> null) {
-            $arr = array_map(null, $filtrarColuna, $parametros, $value);
-            foreach ($arr as $item) {
-
-                $sql = " {$item[0]} {$item[1]} ";
-
-                if (is_string($item[2])) {
-                    $sql .= " '{$item[2]}' and";
-                } elseif (is_numeric($item[2])) {
-                    $sql .= " {$item[2]} and";
-                }
-                $query .= $sql;
-            }
-
-            $rest2 = substr($query, 0, -3);
-
-            $query = $rest2;
-        }
-
-
-        try {
-            $sql = $this->conexao->prepare("$query");
-            $sql->execute();
-
-            return $sql->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $exception) {
-            return $exception->getMessage();
-        }
-    }
-
-    public function readAll($tabela): array
+    public function readAll($table): array
     {
         // TODO: Implement readAll() method.
-        $sql = $this->conexao->prepare("select * from $tabela");
+        $sql = $this->conexao->prepare("select * from $table");
 
         $sql->execute();
         if ($sql->rowCount() > 0) {
@@ -81,24 +34,43 @@ class ModelBase implements Padrao
         return [];
     }
 
-    public function update($tabela, array $colunas, array $dados, $where, $id)
+    public function update($table, array $columns, array $data, $where, $id)
     {
         // TODO: Implement update() method.
+        $sql = "UPDATE {$table} SET " ;
+
+        $arr = array_map(null, $columns, $data);
+
+        foreach ( $arr as $item) {
+            $sql .= " {$item[0]}={$item[1]} ,";
+        }
+
+        //retira a última vírgula
+        $rest = substr($sql, 0, -1);
+
+        $query = $rest;
+
+        $query .= " WHERE {$where}=$id";
+
+        $sq =$this->conexao->prepare($query);
+
+        $sq->execute();
+        return $sq->rowCount();
     }
 
-    public function delete($tabela, $id)
+    public function delete($table, $id)
     {
         // TODO: Implement delete() method.
     }
 
-    public function insert($tabela, $colunas, $dados)
+    public function insert($table, $columns, $data)
     {
         // TODO: Implement insert() method.
         try {
-            $parametros = $colunas;
-            $coluna = str_replace(":", "", $colunas);
-            $stmt = $this->conexao->prepare("INSERT INTO $tabela ($coluna) VALUES ($parametros)");
-            $stmt->execute($dados);
+            $parametros = $columns;
+            $coluna = str_replace(":", "", $columns);
+            $stmt = $this->conexao->prepare("INSERT INTO $table ($coluna) VALUES ($parametros)");
+            $stmt->execute($data);
             $lastId = $this->conexao->lastInsertId();
             return $lastId;
         } catch (PDOException $e) {
@@ -106,8 +78,21 @@ class ModelBase implements Padrao
         }
     }
 
+    public function findBy(string $table, string $column, int $id)
+    {
+        // TODO: Implement findBy() method.
+        try {
+            $sql = $this->conexao->prepare("select * from $table where $column = :id ");
+            $sql->bindValue(":id", $id);
+            $sql->execute();
+            return $sql->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            return null;
+        }
+    }
+
     /**
-     * @param mixed $conexao
+     * @param PDO $conexao
      */
     public function setConexao(PDO $conexao): void
     {
@@ -120,18 +105,5 @@ class ModelBase implements Padrao
     public function getConexao()
     {
         return $this->conexao;
-    }
-
-    public function findBy(string $tabela, string $coluna, int $id)
-    {
-        // TODO: Implement findBy() method.
-        try {
-             $sql = $this->conexao->prepare("select * from $tabela where $coluna = :id ");
-             $sql->bindValue(":id", $id);
-             $sql->execute();
-             return $sql->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            return null;
-        }
     }
 }

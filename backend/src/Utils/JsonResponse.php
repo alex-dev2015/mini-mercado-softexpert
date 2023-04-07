@@ -4,48 +4,47 @@ namespace App\Utils;
 
 class JsonResponse
 {
-    protected bool $sucesso;
-    protected mixed $conteudoResposta;
+    protected bool $success;
+    protected mixed $responseContent;
     protected int $httpStatusCode;
-    protected ?string $mensagemDeErro;
-    protected ?string $mensagemDeRetorno;
+    protected ?string $errorMessage;
+    protected ?string $returnMessage;
 
     public function __construct()
     {
-        $this->mensagemDeErro = null;
-        $this->mensagemDeRetorno = null;
-        $this->conteudoResposta = [];
-        $this->setSucesso(true);
+        $this->errorMessage = null;
+        $this->returnMessage = null;
+        $this->responseContent = [];
+        $this->setSuccess(true);
         $this->setHttpStatusCode(200);
     }
 
-    public function getResponse()
+    public function getResponse() : mixed
     {
-        $conteudoResposta = [
-            'sucesso' => $this->sucesso,
-            'mensagem' => $this->mensagemDeRetorno,
-            'dados' =>  $this->conteudoResposta,
-            'erro' => $this->mensagemDeErro,
+        $responseContent = [
+            'sucesso' => $this->success,
+            'mensagem' => $this->returnMessage,
+            'dados' =>  $this->responseContent,
+            'erro' => $this->errorMessage,
         ];
 
-        return $conteudoResposta;
-    }
-
-
-    /**
-     * @param bool $sucesso
-     */
-    public function setSucesso(bool $sucesso): bool
-    {
-        return $this->sucesso = $sucesso;
+        return $responseContent;
     }
 
     /**
-     * @param mixed $conteudoResposta
+     * @param bool $success
      */
-    public function setConteudoResposta(mixed $conteudoResposta): self
+    public function setSuccess(bool $success): bool
     {
-        $this->conteudoResposta = $conteudoResposta;
+        return $this->success = $success;
+    }
+
+    /**
+     * @param mixed $responseContent
+     */
+    public function setResponseContent(mixed $responseContent): self
+    {
+        $this->responseContent = $responseContent;
         return $this;
     }
 
@@ -60,20 +59,20 @@ class JsonResponse
     }
 
     /**
-     * @param string|null $mensagemDeErro
+     * @param string|null $errorMessage
      */
-    public function setMensagemDeErro(?string $mensagemDeErro): self
+    public function setErrorMessage(?string $errorMessage): self
     {
-        $this->mensagemDeErro = $mensagemDeErro;
+        $this->errorMessage = $errorMessage;
         return $this;
     }
 
     /**
-     * @param string|null $mensagemDeRetorno
+     * @param string|null $returnMessage
      */
-    public function setMensagemDeRetorno(?string $mensagemDeRetorno): self
+    public function setReturnMessage(?string $returnMessage): self
     {
-        $this->mensagemDeRetorno = $mensagemDeRetorno;
+        $this->returnMessage = $returnMessage;
         return $this;
     }
 
