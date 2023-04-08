@@ -1,0 +1,31 @@
+.largeColumn{
+    height: 80px;
+    margin: 20px;
+    padding: 20px;
+    width: 95%;
+    font-size: 34px;
+    font-weight: 400;
+    line-height: 24px;
+    box-sizing: border-box;
+    text-align: end;
+    display: block;
+
+
+
+    color: #6e737d;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+    box-shadow: inset 0 0 0 transparent;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition-property: border-color, box-shadow;
+    transition-duration: 0.15s, 0.15s;
+    transition-timing-function: ease-in-out, ease-in-out;
+    transition-delay: 0s, 0s;
+
+}
