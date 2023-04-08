@@ -6,6 +6,7 @@
 - [Objetivo](#objetivo)
 - [Pré-requisitos](#requisitos)
 - [Executando o Projeto](#usage)
+- [Frontend](#front)
 - [Tecnologias Utilizadas](#utils)
 - [Links](#links)
 - [Licença](#license)
@@ -50,6 +51,10 @@ Agora suba o servidor local do PHP, caso não consiga, isso significa que o seu 
 ```
   php -S localhost:8080  
 ```
+
+## Frontend <a name = "front"></a>
+
+No diretório chamado frontend, econtra-se o código desenvolvido, também o build para executar o projeto diretamente pelo navegador.
 
 ## 🛠 Tecnologias Utilizadas</h2> <a name = "utils"></a>
 
