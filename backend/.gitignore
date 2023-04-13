@@ -5,6 +5,12 @@ target/
 !**/src/test/**/target/
 vendor
 
+.idea/.gitignore
+.idea/SoftExpert.iml
+.idea/modules.xml
+.idea/php.xml
+.idea/vcs.xml
+
 ### STS ###
 .apt_generated
 .classpath
