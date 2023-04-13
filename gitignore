@@ -6,7 +6,8 @@ node_modules
 storage/*.key
 
 /node_modules
-.idea
+.idea/*
+.idea/.gitignore
 
 .phpunit.result.cache
 Homestead.json

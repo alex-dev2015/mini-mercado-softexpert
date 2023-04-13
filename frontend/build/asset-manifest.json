@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.b12c3e31.css",
-    "main.js": "/static/js/main.b034ee3b.js",
+    "main.css": "/static/css/main.9f1a61f2.css",
+    "main.js": "/static/js/main.46d48205.js",
     "static/media/SourceSansPro-Black.otf": "/static/media/SourceSansPro-Black.aa8fa25d872687903e86.otf",
     "static/media/SourceSansPro-Bold.otf": "/static/media/SourceSansPro-Bold.7b95014644d9e9f02173.otf",
     "static/media/SourceSansPro-Semibold.otf": "/static/media/SourceSansPro-Semibold.ffcd3c6176fc6cdd773f.otf",
@@ -51,11 +51,11 @@
     "static/media/SourceSansPro-BlackIt.ttf.woff2": "/static/media/SourceSansPro-BlackIt.ttf.c5cb34e0641f60d3e387.woff2",
     "static/media/SourceSansPro-ExtraLightIt.ttf.woff2": "/static/media/SourceSansPro-ExtraLightIt.ttf.8b9da8acfac24edd6508.woff2",
     "index.html": "/index.html",
-    "main.b12c3e31.css.map": "/static/css/main.b12c3e31.css.map",
-    "main.b034ee3b.js.map": "/static/js/main.b034ee3b.js.map"
+    "main.9f1a61f2.css.map": "/static/css/main.9f1a61f2.css.map",
+    "main.46d48205.js.map": "/static/js/main.46d48205.js.map"
   },
   "entrypoints": [
-    "static/css/main.b12c3e31.css",
-    "static/js/main.b034ee3b.js"
+    "static/css/main.9f1a61f2.css",
+    "static/js/main.46d48205.js"
   ]
 }

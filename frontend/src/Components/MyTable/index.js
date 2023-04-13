@@ -1,4 +1,4 @@
-const MyTable = ({headers, data} ) => {
+const MyTable = ({headers, data, table, alignments}) => {
     const colunasMapeadas = headers.reduce((mapeamento, header) => {
         mapeamento[header.chave] = header.nome;
         return mapeamento;
@@ -7,11 +7,13 @@ const MyTable = ({headers, data} ) => {
     const colunasChave = headers.map((header) => header.chave);
 
     return (
-        <table className="table table-bordered table-hover">
+        <table className={`table ${table} table-hover`}>
             <thead>
             <tr>
                 {colunasChave.map((coluna) => (
-                    <th key={coluna} scope="col">{colunasMapeadas[coluna]}</th>
+                    <th key={coluna} scope="col" style={{textAlign: alignments[coluna]}}>
+                        {colunasMapeadas[coluna]}
+                    </th>
                 ))}
             </tr>
             </thead>
@@ -19,7 +21,9 @@ const MyTable = ({headers, data} ) => {
             {data.map((item, index) => (
                 <tr key={index}>
                     {colunasChave.map((coluna) => (
-                        <td key={coluna}>{item[coluna]}</td>
+                        <td key={coluna} style={{textAlign: alignments[coluna]}}>
+                            {item[coluna]}
+                        </td>
                     ))}
                 </tr>
             ))}
