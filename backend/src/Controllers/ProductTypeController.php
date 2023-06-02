@@ -18,7 +18,7 @@ class ProductTypeController extends Controller
         $this->usefulFunctions = $usefulFunctions;
     }
 
-    public function index()
+    public function index(): void
     {
         $productTypes = $this->productTypeModel->listAllTypesOffProducts();
         if (is_array($productTypes)) {
@@ -33,7 +33,7 @@ class ProductTypeController extends Controller
         }
     }
 
-    public function listTaxes()
+    public function listTaxes(): void
     {
         $newArray = [];
         $products = $this->productTypeModel->listProductsWithTaxes();
@@ -58,7 +58,7 @@ class ProductTypeController extends Controller
         }
     }
 
-    public function show($id)
+    public function show($id): void
     {
         $productType = $this->productTypeModel->searchProductType($id);
         if (is_array($productType)) {
@@ -72,7 +72,7 @@ class ProductTypeController extends Controller
         }
     }
 
-    public function create()
+    public function create(): void
     {
         $data = json_decode(file_get_contents('php://input'), true);
 

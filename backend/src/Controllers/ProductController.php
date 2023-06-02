@@ -18,7 +18,7 @@ class ProductController extends Controller
         $this->usefulFunctions = $usefulFunctions;
     }
 
-    public function index()
+    public function index(): void
     {
         $products = $this->productModel->listAllProducts();
         if (is_array($products)) {
@@ -32,7 +32,7 @@ class ProductController extends Controller
         }
     }
 
-    public function show($id)
+    public function show($id): void
     {
         $product = $this->productModel->searchProduct($id);
         if (is_array($product)) {
@@ -46,7 +46,7 @@ class ProductController extends Controller
         }
     }
 
-    public function create()
+    public function create(): void
     {
         $data = json_decode(file_get_contents('php://input'), true);
 
