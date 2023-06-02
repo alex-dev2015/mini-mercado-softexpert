@@ -22,7 +22,6 @@ class ProductTypeController extends Controller
     {
         $productTypes = $this->productTypeModel->listAllTypesOffProducts();
         if (is_array($productTypes)) {
-            $response = [];
             (empty($productTypes))
                 ? $response = $this->emptyData('GET')
                 : $response = $this->success($productTypes, 'GET');
@@ -62,7 +61,6 @@ class ProductTypeController extends Controller
     {
         $productType = $this->productTypeModel->searchProductType($id);
         if (is_array($productType)) {
-            $response = [];
             (empty($productType))
                 ? $response = $this->emptyData('GET')
                 : $response = $this->success($productType, 'GET');

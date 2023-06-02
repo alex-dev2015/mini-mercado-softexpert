@@ -22,7 +22,6 @@ class SaleController extends Controller
     {
         $sales = $this->saleModel->listSales();
         if (is_array($sales)) {
-            $response = [];
             (empty($sales))
                 ? $response = $this->emptyData('GET')
                 : $response = $this->success($sales, 'GET');
