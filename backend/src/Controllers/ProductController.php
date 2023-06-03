@@ -18,11 +18,10 @@ class ProductController extends Controller
         $this->usefulFunctions = $usefulFunctions;
     }
 
-    public function index()
+    public function index(): void
     {
         $products = $this->productModel->listAllProducts();
         if (is_array($products)) {
-            $response = [];
             (empty($products))
                 ? $response = $this->emptyData('GET')
                 : $response = $this->success($products, 'GET');
@@ -32,11 +31,10 @@ class ProductController extends Controller
         }
     }
 
-    public function show($id)
+    public function show($id): void
     {
         $product = $this->productModel->searchProduct($id);
         if (is_array($product)) {
-            $response = [];
             (empty($product))
                 ? $response = $this->emptyData('GET')
                 : $response = $this->success($product, 'GET');
@@ -46,7 +44,7 @@ class ProductController extends Controller
         }
     }
 
-    public function create()
+    public function create(): void
     {
         $data = json_decode(file_get_contents('php://input'), true);
 

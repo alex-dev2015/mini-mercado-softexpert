@@ -5,7 +5,7 @@ namespace App\Utils;
 class JsonResponse
 {
     protected bool $success;
-    protected mixed $responseContent;
+    protected array $responseContent;
     protected int $httpStatusCode;
     protected ?string $errorMessage;
     protected ?string $returnMessage;
@@ -19,7 +19,7 @@ class JsonResponse
         $this->setHttpStatusCode(200);
     }
 
-    public function getResponse() : mixed
+    public function getResponse() : array
     {
         $responseContent = [
             'sucesso' => $this->success,
@@ -42,7 +42,7 @@ class JsonResponse
     /**
      * @param mixed $responseContent
      */
-    public function setResponseContent(mixed $responseContent): self
+    public function setResponseContent(array $responseContent): self
     {
         $this->responseContent = $responseContent;
         return $this;

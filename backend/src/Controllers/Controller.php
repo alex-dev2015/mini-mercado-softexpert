@@ -13,7 +13,7 @@ class Controller
         $this->response = $response;
     }
 
-    public function success(array $data, string $verb)
+    public function success(array $data, string $verb): string
     {
         $this->response->setSuccess(true);
         if ($verb == 'GET') {
@@ -30,7 +30,7 @@ class Controller
         return json_encode($this->response->getResponse());
     }
 
-    public function responseFailure(string $verb)
+    public function responseFailure(string $verb): string
     {
         $this->response->setSuccess(false);
         $this->response->setHttpStatusCode(400);
@@ -52,7 +52,7 @@ class Controller
         return json_encode($this->response->getResponse());
     }
 
-    public function emptyData(string $verb)
+    public function emptyData(string $verb): string
     {
         $this->response->setSuccess(false);
         $this->response->setHttpStatusCode(400);

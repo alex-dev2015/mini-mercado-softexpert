@@ -18,11 +18,10 @@ class SaleController extends Controller
         $this->usefulFunctions = $usefulFunctions;
     }
 
-    public function index()
+    public function index(): void
     {
         $sales = $this->saleModel->listSales();
         if (is_array($sales)) {
-            $response = [];
             (empty($sales))
                 ? $response = $this->emptyData('GET')
                 : $response = $this->success($sales, 'GET');
@@ -32,29 +31,7 @@ class SaleController extends Controller
         }
     }
 
-    public function show($id)
-    {
-        //
-    }
-
-    //    public function startSale()
-    //    {
-    //        $data = json_decode(file_get_contents('php://input'), true);
-    //
-    //        if (empty($data)) {
-    //            echo $this->emptyData('POST');
-    //        }else{
-    //            $data["date"] = date('Y-m-d');
-    //            $insert = $this->saleModel->startSales($data);
-    //            if ($insert > 0 ) {
-    //                echo json_encode(['id' => $insert]);
-    //            }else{
-    //                echo $this->responseFailure('POST');
-    //            }
-    //        }
-    //    }
-
-    public function executeSale()
+    public function executeSale(): void
     {
         $data = json_decode(file_get_contents('php://input'), true);
 

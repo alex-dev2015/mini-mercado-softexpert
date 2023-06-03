@@ -4,23 +4,23 @@ namespace App\Utils;
 
 class UsefulFunctions
 {
-    public function formatNumberToInsertInDatabase($value, $decimalPlaces)
+    public function formatNumberToInsertInDatabase($value, $decimalPlaces): string
     {
         $formatNumber = number_format($value, $decimalPlaces, '.');
         return str_replace(',', '', $formatNumber);
     }
 
-    public function formatCurrency($number)
+    public function formatCurrency($number): string
     {
         return number_format($number, 2, ',', '.');
     }
 
-    public function convertPercentage($number)
+    public function convertPercentage($number): string
     {
         return $this->formatNumberToInsertInDatabase($number / 100, 4);
     }
 
-    public function removeComma($number)
+    public function removeComma($number): string
     {
         return str_replace(',', '.', $number);
     }
