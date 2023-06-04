@@ -24,6 +24,9 @@ class AuthController extends Controller
 
     public function login()
     {
+        header('Content-Type: application/json');
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Headers: Authorization, Content-Type, x-xsrf-token, x_csrftoken, Cache-Control, X-Requested-With');
         $data = json_decode(file_get_contents('php://input'), true);
 
 
@@ -43,7 +46,7 @@ class AuthController extends Controller
         }
 
         $payload = [
-            "exp" => time() + 20,
+            "exp" => time() + 100,
             "iat" => time(),
             "email" => $username
         ];
@@ -53,6 +56,9 @@ class AuthController extends Controller
     }
 
     public function auth(){
+        header('Content-Type: application/json');
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Headers: Authorization, Content-Type, x-xsrf-token, x_csrftoken, Cache-Control, X-Requested-With');
         if (!empty($_SERVER["HTTP_AUTHORIZATION"])){
             $authorization = $_SERVER["HTTP_AUTHORIZATION"];
             $token = str_replace('Bearer ', '', $authorization);
@@ -65,7 +71,6 @@ class AuthController extends Controller
             }catch (Exception $e){
                 if ($e->getMessage() === 'Expired token'){
                     $this->responseFailure('GET');
-                    die('EXPIRED');
                 }
             }
         }
