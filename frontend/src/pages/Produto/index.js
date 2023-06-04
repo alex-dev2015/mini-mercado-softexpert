@@ -1,7 +1,7 @@
-import {Box, Col, Content, Row, Button} from "adminlte-2-react";
+import api from "../../services/api";
 import MyTable from "../../Components/MyTable";
 import {useEffect, useRef, useState} from "react";
-import api from "../../services/api";
+import {Box, Col, Content, Row} from "adminlte-2-react";
 import {formatCurrency} from "../../utils/globalFunctions";
 
 const Produto = () => {

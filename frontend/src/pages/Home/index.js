@@ -1,4 +1,4 @@
-import { Box, Col, Content, Row, Button } from "adminlte-2-react";
+import { Col, Content, Row, Button } from "adminlte-2-react";
 
 const Home = () => {
     return (<Content title="Página Inicial" homeRoute="/home" subTitle="Mini Mercado SofExpert" browserTitle="SoftExpert">
