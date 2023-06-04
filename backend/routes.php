@@ -5,6 +5,12 @@ use FastRoute\RouteCollector;
 $dispatcher = FastRoute\simpleDispatcher(
     function (RouteCollector $r) {
         /**
+         * Auth Routes
+         */
+        $r->addRoute('POST', '/login', 'App\Controllers\AuthController@login');
+        $r->addRoute('GET', '/authenticate', 'App\Controllers\AuthController@auth');
+
+        /**
          * Products Routes
          */
         $r->addRoute('GET', '/products', 'App\Controllers\ProductController@index');

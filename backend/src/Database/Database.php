@@ -4,7 +4,6 @@ namespace App\Database;
 
 use PDO;
 use PDOException;
-use Dotenv\Dotenv;
 
 class Database
 {
@@ -15,7 +14,18 @@ class Database
         if (!isset(self::$pdo)) {
 
             try {
-                $conexao = 'pgsql:host=localhost;port=5432;dbname=mercado_expert;user=expert;password=openPsql20';
+                $host = $_ENV['DATABASE_HOST'];
+                $port = $_ENV['DATABASE_PORT'];
+                $dbName = $_ENV['DATABASE_NAME'];
+                $user = $_ENV['DATABASE_USER'];
+                $password = $_ENV['DATABASE_PASSWORD'];
+
+                $conexao =  'pgsql:host=' . $host .
+                            ';port=' . $port .
+                            ';dbname=' . $dbName .
+                            ';user=' . $user .
+                            ';password=' . $password
+                ;
                 $pdo = new PDO($conexao);
 
             } catch (PDOException $exception){

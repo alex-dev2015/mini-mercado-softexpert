@@ -33,7 +33,7 @@ class Controller
     public function responseFailure(string $verb): string
     {
         $this->response->setSuccess(false);
-        $this->response->setHttpStatusCode(400);
+        $this->response->setHttpStatusCode(401);
         if ($verb == 'GET') {
             $this->response->setReturnMessage('Falha ao retornar os dados');
         }
@@ -55,12 +55,12 @@ class Controller
     public function emptyData(string $verb): string
     {
         $this->response->setSuccess(false);
-        $this->response->setHttpStatusCode(400);
+        $this->response->setHttpStatusCode(401);
         if ($verb == 'GET') {
             $this->response ->setReturnMessage('Dados não encontrado');
         }
         if ($verb == 'POST') {
-            $this->response ->setReturnMessage('Dados da Requisição Vazia');
+            $this->response ->setReturnMessage('Dados da Requisição Inválidos');
         }
 
         return json_encode($this->response->getResponse());

@@ -16,7 +16,9 @@
         "ext-pdo": "*",
         "psr/http-message": "^1.0",
         "nikic/fast-route": "^1.3",
-        "ext-json": "*"
+        "ext-json": "*",
+        "firebase/php-jwt": "^6.5",
+        "vlucas/phpdotenv": "^5.5"
     },
     "require-dev": {
         "phpunit/phpunit": "^10.0"
