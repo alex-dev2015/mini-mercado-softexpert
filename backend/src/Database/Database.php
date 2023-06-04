@@ -4,7 +4,6 @@ namespace App\Database;
 
 use PDO;
 use PDOException;
-use Dotenv\Dotenv;
 
 class Database
 {
@@ -15,8 +14,6 @@ class Database
         if (!isset(self::$pdo)) {
 
             try {
-                $dotEnv = Dotenv::createImmutable(dirname(__FILE__, 3));
-                $dotEnv->load();
                 $host = $_ENV['DATABASE_HOST'];
                 $port = $_ENV['DATABASE_PORT'];
                 $dbName = $_ENV['DATABASE_NAME'];

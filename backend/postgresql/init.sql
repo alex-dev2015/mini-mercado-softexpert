@@ -57,4 +57,4 @@ INSERT INTO products_sales (sale_id, product_id, unitary_value, amount, quantity
 VALUES (1, 1, 10.99, 10.99, 1, 1.00);
 
 INSERT INTO users (username, password)
-VALUES ('admin', '$2y$10$tQoh5MheXzVSznyg3fsxYOLilqy.zCie2R5MGOm1EpVTcsGOzjR1q');
+VALUES ('admin@softexpert.com', '$2y$10$tQoh5MheXzVSznyg3fsxYOLilqy.zCie2R5MGOm1EpVTcsGOzjR1q');

@@ -16,6 +16,54 @@ class ModelBase implements Padrao
         $this->setConexao($conexao);
     }
 
+    public function read(array $cols, $table, array $colRest = null, array $parameters = null, array $value = null)
+    {
+        $query = "select ";
+
+        foreach ($cols as $field)
+        {
+            $query .= " {$field},";
+        }
+
+        $rest = substr($query, 0, -1);
+
+        $query = $rest;
+
+        $query .=  " from {$table} WHERE  ";
+
+        if ($colRest <> null)
+        {
+            $arr = array_map(null, $colRest, $parameters, $value);
+            foreach ( $arr as $item) {
+
+                $sql = " {$item[0]} {$item[1]} ";
+
+                if(is_string($item[2]))
+                {
+                    $sql .= " '{$item[2]}' and";
+                }elseif (is_numeric($item[2])) {
+                    $sql .= " {$item[2]} and";
+                }
+                $query .= $sql;
+            }
+
+            $rest2 = substr($query, 0, -3);
+
+            $query = $rest2;
+        }
+
+        try{
+            $sql =  $this->conexao->prepare("$query");
+            $sql->execute();
+
+            return $sql->fetchAll( PDO::FETCH_ASSOC);
+        }catch (PDOException $exception){
+            echo  $exception->getMessage();
+            echo "Error!";
+            return null;
+        }
+    }
+
     public function readAll($table): array
     {
         // TODO: Implement readAll() method.
@@ -45,7 +93,6 @@ class ModelBase implements Padrao
             $sql .= " {$item[0]}={$item[1]} ,";
         }
 
-        //retira a última vírgula
         $rest = substr($sql, 0, -1);
 
         $query = $rest;
@@ -106,4 +153,5 @@ class ModelBase implements Padrao
     {
         return $this->conexao;
     }
+
 }
