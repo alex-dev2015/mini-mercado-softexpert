@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import api from "../../services/api";
+import * as PropTypes from "prop-types";
 
+
+function FontAwesomeIcon(props) {
+    return null;
+}
+
+FontAwesomeIcon.propTypes = {icon: PropTypes.string};
 const Login = ({ onLogin }) => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [username, setUsername] = useState('');
@@ -52,7 +59,6 @@ const Login = ({ onLogin }) => {
                             value={username}
                             onChange={handleUsernameChange}
                         />
-                        <span className="glyphicon glyphicon-user form-control-feedback" />
                     </div>
                     <div className="form-group has-feedback">
                         <input
@@ -62,7 +68,6 @@ const Login = ({ onLogin }) => {
                             value={password}
                             onChange={handlePasswordChange}
                         />
-                        <span className="glyphicon glyphicon-lock form-control-feedback" />
                     </div>
                     <div className="row">
                         <div className="col-xs-12">

@@ -1,4 +1,4 @@
-import React, {Component, useEffect, useState} from 'react';
+import React, { useEffect, useState} from 'react';
 import AdminLTE, {Sidebar} from 'adminlte-2-react';
 
 import Login from "./pages/Login";
@@ -29,7 +29,7 @@ const App = () => {
             setUser(result.data.email);
             setIsAuthenticated(loggedIn);
         }).catch((error) => {
-            handleLogout();
+            console.log(error);
         })
     }, []);
 
@@ -38,19 +38,12 @@ const App = () => {
         setIsAuthenticated(true);
     };
 
-    const handleLogout = () => {
-        sessionStorage.setItem('login', 'false');
-        sessionStorage.removeItem('session');
-        setIsAuthenticated(false);
-    };
-
-    const sidebar = [
+     const sidebar = [
         <UserPanel username={user} key="username" imageUrl={UsuarioImg} status='online'/>,
         <Item key="home" text="Home" to="/home"/>,
         <Item icon='fa-inbox' key="tipo_produtos" text="Tipo de Produtos" to="/tipo_produtos"/>,
         <Item icon='fa-box' key="produtos" text="Produtos" to="/produtos"/>,
         <Item icon='fa-shopping-cart' key="sales" text="Vendas" to="/sales"/>,
-        <Item icon='fa-sign-out' key="logout" text="Logout" to="/login" onClick={handleLogout} />,
     ]
 
     return (
