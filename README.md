@@ -59,7 +59,9 @@ mas como nesse projeto já tenho as configurações de acesso ao banco de dados 
 
 ## Frontend <a name = "front"></a>
 
-No diretório chamado frontend, econtra-se o código desenvolvido, também o build para executar o projeto diretamente pelo navegador.
+No diretório chamado frontend, econtra-se o código desenvolvido, o build para executar o projeto diretamente pelo navegador
+e um arquivo Readme explicando os passos para executar o projeto.
+
 
 ## 🛠 Tecnologias Utilizadas</h2> <a name = "utils"></a>
 
