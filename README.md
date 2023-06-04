@@ -52,6 +52,11 @@ Agora suba o servidor local do PHP, caso não consiga, isso significa que o seu 
   php -S localhost:8080  
 ```
 
+## Atenção
+Na raíz do projeto possui um arquivo chamado <b>.env</b> contendo as configurações das variáveis de ambiente. Por padrão o arquivo  não é exposto em repositórios, o ideal seria ter uma cópia de exemplo,
+mas como nesse projeto já tenho as configurações de acesso ao banco de dados definida, houve a necessidade de fazer dessa forma.
+
+
 ## Frontend <a name = "front"></a>
 
 No diretório chamado frontend, econtra-se o código desenvolvido, também o build para executar o projeto diretamente pelo navegador.
