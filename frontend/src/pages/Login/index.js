@@ -1,13 +1,6 @@
 import React, { useState } from 'react';
 import api from "../../services/api";
-import * as PropTypes from "prop-types";
 
-
-function FontAwesomeIcon(props) {
-    return null;
-}
-
-FontAwesomeIcon.propTypes = {icon: PropTypes.string};
 const Login = ({ onLogin }) => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [username, setUsername] = useState('');
