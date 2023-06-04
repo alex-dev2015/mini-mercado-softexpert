@@ -1,5 +1,5 @@
 import {useEffect, useRef, useState} from "react";
-import {Box, Col, Content, Row, Button} from "adminlte-2-react";
+import {Box, Col, Content, Row} from "adminlte-2-react";
 
 import api from "../../services/api";
 

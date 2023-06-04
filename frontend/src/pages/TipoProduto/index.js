@@ -1,8 +1,9 @@
-import {Box, Col, Content, Row, Button} from "adminlte-2-react";
-import api from "../../services/api";
-import {useEffect, useRef, useState} from "react";
+import {Box, Col, Content, Row} from "adminlte-2-react";
 import MyTable from "../../Components/MyTable";
+import {useEffect, useRef, useState} from "react";
 import {floatToPercentage} from "../../utils/globalFunctions";
+
+import api from "../../services/api";
 
 const TipoProduto = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
